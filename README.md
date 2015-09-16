@@ -57,3 +57,6 @@ You need to have pip and ansible [installed](http://docs.ansible.com/ansible/int
     ```shell
     ansible-playbook cleanup.yml
     ```
+## Todo
+
+Use separate role for mongodb clusterization
