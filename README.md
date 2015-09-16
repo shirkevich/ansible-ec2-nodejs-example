@@ -11,7 +11,7 @@ You need to have pip and ansible [installed](http://docs.ansible.com/ansible/int
  0. Clone project:
 
     ```shell
-    git clone https://github.com/shirkevich/ansible-ec2-nodejs.git
+    git clone https://github.com/shirkevich/ansible-ec2-nodejs-example.git
     ```
 
  1. Install required python libraries:
