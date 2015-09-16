@@ -4,7 +4,8 @@ This sample project will help you provision Node.js application to ec2 instance 
 
 
 ## Prerequisites
-You need to have pip and ansible [installed](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip).
+This example was tested under (pyenv-virtualenv)[https://github.com/yyuu/pyenv-virtualenv] with python 2.7.10. Please use same environment.
+You also need to have pip and [ansible](http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip).
 
 ## Deploy
 
