@@ -1,0 +1,37 @@
+- hosts: localhost
+  vars:
+    aws_region: "{{ ansible_env['EC2_REGION'] }}"
+    aws_instance_type: t1.micro
+    aws_sg_name: "nodejs"
+    aws_sg_description: "nodejs security group"
+    aws_instance_tags: { role: nodejs }
+
+  roles:
+    - {role: ec2-provision, tags: ["ec2"]}
+
+- hosts: tag_role_nodejs
+  user: ubuntu
+  become: true
+  vars:
+    nginx_application_path: /var/www/nodejs/EmployeeDB/public
+    app_git_url: https://github.com/ijason/NodeJS-Sample-App.git
+    extra_packages:
+      - mongodb
+
+  roles:
+    - {role: nodejs-app, tags: ["deploy"]}
+
+- hosts: localhost
+
+  tasks:
+    - name: ensure that service is alive
+      uri: url="http://{{ groups['tag_role_nodejs'][0] }}" return_content=yes
+      register: webpage
+      tags: check
+
+    - fail: msg="Something went wrong, please check installation by hand"
+      when: "'Employees' not in webpage.content"
+      tags: check
+
+    - debug: msg="Your nodejs app is deployed to http://{{ groups['tag_role_nodejs'][0] }}"
+      tags: check

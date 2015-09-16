@@ -1,0 +1,7 @@
+- src: https://github.com/shirkevich/ansible-ec2-provision
+  version: master
+  name: ec2-provision
+
+- src: https://github.com/shirkevich/ansible-nodejs-app
+  version: master
+  name: nodejs-app

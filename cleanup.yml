@@ -1,0 +1,13 @@
+- hosts: tag_role_nodejs
+  user: ubuntu
+
+  tasks:
+  - name: Gather facts
+    action: ec2_facts
+
+  - debug: msg="Killing {{ ansible_ec2_instance_id }}"
+
+  - local_action:
+      module: ec2
+      state: 'absent'
+      instance_ids: "{{ ansible_ec2_instance_id }}"
